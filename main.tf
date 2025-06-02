@@ -1,15 +1,15 @@
 resource "random_integer" "count" {
-  min = 1
-  max = 5
+  min = 5
+  max = 10
   keepers = {
     always_change = plantimestamp()
   }
 }
 
 resource "random_string" "service" {
-  count = random_integer.count.result
+  count = 3
 
-  length  = var.length
+  length  = var.length + random_integer.count.result
   special = var.special
   lower   = var.lower
   keepers = {
